@@ -10,6 +10,7 @@ namespace TestCase
             People = new Person[sample];
             for (int i = 0; i < sample; i++)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Person {i+1}");
                 Console.Write("Enter what is age of death : ");
                 if (!int.TryParse(Console.ReadLine(), out int aod))
@@ -29,10 +30,17 @@ namespace TestCase
             }
 
             if (Exception)
+            {
+                Console.WriteLine();
                 Console.WriteLine("Average people death: -1");
+            }
             else
             {
                 Console.WriteLine();
+                foreach (var item in People)
+                {
+                    Console.WriteLine($"Number of people killed on year {item.YearOfDeath - item.AgeOfDeath} is : {item.NumberOfPeopleKilled}");
+                }
                 Console.WriteLine($"Average people death : {People.Average(a => a.NumberOfPeopleKilled)}");
             }
         }
